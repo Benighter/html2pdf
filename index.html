@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML to PDF Converter</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-shell">
+        <aside class="sidebar">
+            <div class="brand">
+                <i class="fas fa-file-pdf"></i>
+                <span>HTML2PDF</span>
+            </div>
+            <div id="author-links" class="author-links"></div>
+            <div class="theme-toggle-row">
+                <span>🌞</span>
+                <label class="switch">
+                    <input type="checkbox" id="theme-toggle">
+                    <span class="slider round"></span>
+                </label>
+                <span>🌙</span>
+            </div>
+        </aside>
+        <main class="main-content">
+            <header class="main-header">
+                <h1>HTML to PDF Converter</h1>
+                <p>Convert your HTML code to a downloadable PDF document with live preview.</p>
+            </header>
+            <section class="editor-section">
+                <div class="input-card card">
+                    <h2><i class="fas fa-code"></i> HTML Editor</h2>
+                    <textarea id="html-input" placeholder="Paste your HTML code here..."></textarea>
+                    <div class="button-row">
+                        <button id="convert-btn" class="primary-btn"><i class="fas fa-download"></i> Download PDF</button>
+                        <button id="clear-btn" class="secondary-btn"><i class="fas fa-eraser"></i> Clear</button>
+                        <button id="template-btn" class="secondary-btn"><i class="fas fa-code"></i> Load Sample</button>
+                    </div>
+                </div>
+                <div class="preview-card card">
+                    <h2><i class="fas fa-eye"></i> Live Preview</h2>
+                    <div id="preview-container" class="preview-container"></div>
+                </div>
+            </section>
+            <div id="result-container" class="hidden">
+                <h2><i class="fas fa-check-circle"></i> Your PDF is ready!</h2>
+                <div class="pdf-preview">
+                    <i class="fas fa-file-pdf pdf-icon"></i>
+                </div>
+                <a id="download-btn" class="primary-btn" href="#" download="document.pdf"><i class="fas fa-cloud-download-alt"></i> Download PDF</a>
+            </div>
+            <div id="error-container" class="hidden">
+                <i class="fas fa-exclamation-circle error-icon"></i>
+                <p id="error-message">Something went wrong. Please try again.</p>
+            </div>
+            <div class="info-card card">
+                <h2><i class="fas fa-info-circle"></i> About This App</h2>
+                <p>This application converts HTML code to PDF using the HTML2PDF-app API. For best results:</p>
+                <ul>
+                    <li>Include complete HTML structure with <code>&lt;html&gt;</code>, <code>&lt;head&gt;</code>, and <code>&lt;body&gt;</code> tags</li>
+                    <li>Use standard CSS that works in most browsers</li>
+                    <li>For custom styling, include CSS within <code>&lt;style&gt;</code> tags</li>
+                    <li>External resources like images should use absolute URLs</li>
+                </ul>
+                <div class="note">
+                    <p><i class="fas fa-lightbulb"></i> <strong>Tip:</strong> Use the "Load Sample" button to see an example of properly formatted HTML.</p>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html> 
