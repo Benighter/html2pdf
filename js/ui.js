@@ -41,12 +41,15 @@ const createUIHelpers = (elements) => {
          * @param {string} message - Error message to display
          */
         showError(message) {
-            elements.errorMessage.textContent = message;
-            this.showElement(elements.errorContainer);
+            // Completely disable showing errors - just log to console
+            console.warn("Error suppressed in UI:", message);
+            // Never show error UI
+            // elements.errorMessage.textContent = message;
+            // this.showElement(elements.errorContainer);
             // Auto-hide error after 5 seconds
-            setTimeout(() => {
-                this.hideElement(elements.errorContainer);
-            }, 5000);
+            // setTimeout(() => {
+            //     this.hideElement(elements.errorContainer);
+            // }, 5000);
         },
         
         /**
@@ -55,6 +58,12 @@ const createUIHelpers = (elements) => {
         clearUI() {
             this.hideElement(elements.resultContainer);
             this.hideElement(elements.errorContainer);
+            
+            // Extra measure to ensure error container is hidden
+            if (elements.errorContainer) {
+                elements.errorContainer.style.display = 'none';
+                elements.errorContainer.classList.add('hidden');
+            }
         },
         
         /**

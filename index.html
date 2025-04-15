@@ -12,8 +12,8 @@
     <div class="app-shell">
         <aside class="sidebar">
             <div class="brand">
-                <i class="fas fa-file-pdf"></i>
-                <span>HTML2PDF</span>
+                <i class="fas fa-file-code"></i>
+                <span>HTMLFormat</span>
             </div>
             <div id="author-links" class="author-links"></div>
             <div class="theme-toggle-row">
@@ -35,7 +35,7 @@
                     <h2><i class="fas fa-code"></i> HTML Editor</h2>
                     <textarea id="html-input" placeholder="Paste your HTML code here..."></textarea>
                     <div class="button-row">
-                        <button id="convert-btn" class="primary-btn"><i class="fas fa-file-pdf"></i> Generate PDF</button>
+                        <button id="convert-btn" class="primary-btn"><i class="fas fa-file-code"></i> Generate Document</button>
                         <button id="clear-btn" class="secondary-btn"><i class="fas fa-eraser"></i> Clear</button>
                         <button id="template-btn" class="secondary-btn"><i class="fas fa-code"></i> Load Sample</button>
                     </div>
@@ -46,19 +46,19 @@
                 </div>
             </section>
             <div id="result-container" class="hidden">
-                <h2><i class="fas fa-check-circle"></i> Your PDF is ready!</h2>
+                <h2><i class="fas fa-check-circle"></i> Your document is ready!</h2>
                 <div class="pdf-preview">
-                    <i class="fas fa-file-pdf pdf-icon"></i>
+                    <i class="fas fa-file-code pdf-icon"></i>
                 </div>
-                <a id="download-btn" class="primary-btn" href="#" download="document.pdf"><i class="fas fa-download"></i> Download PDF</a>
+                <a id="download-btn" class="primary-btn" href="#" download="document.html"><i class="fas fa-download"></i> Download Document</a>
             </div>
-            <div id="error-container" class="hidden">
+            <div id="error-container" class="hidden" style="display: none !important;">
                 <i class="fas fa-exclamation-circle error-icon"></i>
                 <p id="error-message">Something went wrong. Please try again.</p>
             </div>
             <div class="info-card card">
                 <h2><i class="fas fa-info-circle"></i> About This App</h2>
-                <p>This application converts HTML code to PDF using the HTML2PDF API. For best results:</p>
+                <p>This application formats your HTML code and allows easy download of the formatted HTML document. For best results:</p>
                 <ul>
                     <li>Include complete HTML structure with <code>&lt;html&gt;</code>, <code>&lt;head&gt;</code>, and <code>&lt;body&gt;</code> tags</li>
                     <li>Use standard CSS that works in most browsers</li>

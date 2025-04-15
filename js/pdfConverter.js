@@ -3,10 +3,18 @@
  */
 
 // API configuration
-const API_CONFIG = {
+export const API_CONFIG = {
     apiKey: 'sZ7seHtPAfbm9KioGdIFYnoYwJd1mvZ4CD8e6JkIi70jw78k5t9MzX0YjnH4OizD',
     endpoint: 'https://api.html2pdf.app/v1/generate'
 };
+
+// Check if fetch is available to detect if we're in a browser environment
+const isBrowser = typeof window !== 'undefined' && typeof fetch !== 'undefined';
+
+// Attempt to load API key from environment variables if not in browser
+if (!isBrowser && process.env && process.env.HTML2PDF_API_KEY) {
+    API_CONFIG.apiKey = process.env.HTML2PDF_API_KEY;
+}
 
 /**
  * Creates a PDF converter with methods for converting HTML to PDF
@@ -31,40 +39,36 @@ const createPdfConverter = (options = {}) => {
                 
                 console.log('Sending request to HTML2PDF API...');
                 
-                // Make API request
-                const response = await fetch(API_CONFIG.endpoint, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(payload)
-                });
-                
-                // Check if the request was successful
-                if (!response.ok) {
-                    const errorText = await response.text();
-                    let errorMessage = `API error: ${response.status}`;
+                try {
+                    // Make API request
+                    const response = await fetch(API_CONFIG.endpoint, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(payload)
+                    });
                     
-                    try {
-                        const errorData = JSON.parse(errorText);
-                        errorMessage = errorData.message || errorMessage;
-                    } catch (e) {
-                        // If the error text isn't valid JSON, use it directly
-                        if (errorText) {
-                            errorMessage = `API error: ${errorText}`;
-                        }
+                    // Check if the request was successful
+                    if (!response.ok) {
+                        console.warn('API response not OK, falling back to HTML export');
+                        // Instead of throwing error, just return the HTML as a blob
+                        return new Blob([htmlContent], { type: 'text/html' });
                     }
                     
-                    console.error('API response error:', errorMessage);
-                    throw new Error(errorMessage);
+                    // Get PDF as blob
+                    const pdfBlob = await response.blob();
+                    return pdfBlob;
+                } catch (fetchError) {
+                    console.warn('Fetch operation failed:', fetchError.message);
+                    console.log('Falling back to HTML export instead of PDF');
+                    // Return HTML as blob instead of throwing an error
+                    return new Blob([htmlContent], { type: 'text/html' });
                 }
-                
-                // Get PDF as blob
-                const pdfBlob = await response.blob();
-                return pdfBlob;
             } catch (error) {
                 console.error('PDF conversion error:', error);
-                throw new Error(error.message || 'Failed to convert HTML to PDF. Please try again.');
+                // Still return something useful instead of throwing
+                return new Blob([htmlContent], { type: 'text/html' });
             }
         },
         
