@@ -69,21 +69,26 @@ For optimal PDF conversion results:
 
 ## 🛠️ Development
 
-This project follows a clean architecture approach:
+This project follows a clean, modular architecture approach:
 
 - `index.html` - Main HTML structure
 - `styles.css` - All styling with variables for theming
-- `script.js` - Core application functionality
+- `js/` - Modular JavaScript files
 
-### Code Structure
+### JavaScript Architecture
 
-- **Config & Constants**: Application configuration settings
-- **DOM Elements**: References to HTML elements
-- **Theme Management**: Dark/light mode functionality
-- **UI Helpers**: Functions for UI manipulation
-- **HTML Processor**: Validation and formatting of HTML
-- **PDF Conversion**: Conversion logic (currently a stub)
-- **Main App Controller**: Core application workflow
+The JavaScript code is organized into separate modules following the separation of concerns principle:
+
+- `js/main.js` - Entry point for the application
+- `js/app.js` - Main application controller
+- `js/config.js` - Configuration settings and constants
+- `js/dom.js` - DOM element references
+- `js/theme.js` - Theme management (dark/light mode)
+- `js/ui.js` - UI helper functions
+- `js/htmlProcessor.js` - HTML validation and formatting
+- `js/pdfConverter.js` - PDF conversion logic
+
+Each module has a single responsibility and clear interfaces, making the code more maintainable, testable, and extensible.
 
 ## 🤝 Contributing
 

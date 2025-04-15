@@ -35,7 +35,7 @@
                     <h2><i class="fas fa-code"></i> HTML Editor</h2>
                     <textarea id="html-input" placeholder="Paste your HTML code here..."></textarea>
                     <div class="button-row">
-                        <button id="convert-btn" class="primary-btn"><i class="fas fa-download"></i> Download PDF</button>
+                        <button id="convert-btn" class="primary-btn"><i class="fas fa-file-pdf"></i> Generate PDF</button>
                         <button id="clear-btn" class="secondary-btn"><i class="fas fa-eraser"></i> Clear</button>
                         <button id="template-btn" class="secondary-btn"><i class="fas fa-code"></i> Load Sample</button>
                     </div>
@@ -50,7 +50,7 @@
                 <div class="pdf-preview">
                     <i class="fas fa-file-pdf pdf-icon"></i>
                 </div>
-                <a id="download-btn" class="primary-btn" href="#" download="document.pdf"><i class="fas fa-cloud-download-alt"></i> Download PDF</a>
+                <a id="download-btn" class="primary-btn" href="#" download="document.pdf"><i class="fas fa-download"></i> Download PDF</a>
             </div>
             <div id="error-container" class="hidden">
                 <i class="fas fa-exclamation-circle error-icon"></i>
@@ -58,7 +58,7 @@
             </div>
             <div class="info-card card">
                 <h2><i class="fas fa-info-circle"></i> About This App</h2>
-                <p>This application converts HTML code to PDF using the HTML2PDF-app API. For best results:</p>
+                <p>This application converts HTML code to PDF using the HTML2PDF API. For best results:</p>
                 <ul>
                     <li>Include complete HTML structure with <code>&lt;html&gt;</code>, <code>&lt;head&gt;</code>, and <code>&lt;body&gt;</code> tags</li>
                     <li>Use standard CSS that works in most browsers</li>
@@ -71,6 +71,15 @@
             </div>
         </main>
     </div>
-    <script src="script.js"></script>
+    <!-- Main application scripts -->
+    <script type="module" src="js/main.js"></script>
+    
+    <!-- API test script (for debugging) -->
+    <script src="js/testApi.js"></script>
+    
+    <!-- Debug note in console -->
+    <script>
+        console.info('🔍 Debugging tip: Run testHtml2PdfApi() in the console to verify API connectivity');
+    </script>
 </body>
 </html> 
